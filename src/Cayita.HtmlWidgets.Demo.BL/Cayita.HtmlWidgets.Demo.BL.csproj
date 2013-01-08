@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0C8D6D32-529E-4AA8-8170-8CDC66526DC0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Cayita.HtmlWidgets.Demo.BL</RootNamespace>
+    <AssemblyName>Cayita.HtmlWidgets.Demo.BL</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\..\lib\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces">
+      <HintPath>..\..\lib\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Common">
+      <HintPath>..\..\lib\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Cayita.HtmlWidgets">
+      <HintPath>..\..\lib\Cayita.HtmlWidgets.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.ServiceInterface">
+      <HintPath>..\..\lib\ServiceStack.ServiceInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack">
+      <HintPath>..\..\lib\ServiceStack.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite">
+      <HintPath>..\..\lib\ServiceStack.OrmLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Controller.cs" />
+    <Compile Include="BLRequest.cs" />
+    <Compile Include="User.Controller.cs" />
+    <Compile Include="Author.Controller.cs" />
+    <Compile Include="BLException.cs" />
+    <Compile Include="Sale.Controller.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\Cayita.HtmlWidgets.Demo.Models\Cayita.HtmlWidgets.Demo.Models.csproj">
+      <Project>{452D506C-A071-40BB-B064-5A4BAD30F395}</Project>
+      <Name>Cayita.HtmlWidgets.Demo.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cayita.HtmlWidgets.Demo.DAL\Cayita.HtmlWidgets.Demo.DAL.csproj">
+      <Project>{20118E2F-238F-4320-8AC3-ED36FF967E2B}</Project>
+      <Name>Cayita.HtmlWidgets.Demo.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cayita.HtmlWidgets.Demo.BLRules\Cayita.HtmlWidgets.Demo.BLRules.csproj">
+      <Project>{5B0F44AA-14DE-48F4-87F3-BAA691D46935}</Project>
+      <Name>Cayita.HtmlWidgets.Demo.BLRules</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

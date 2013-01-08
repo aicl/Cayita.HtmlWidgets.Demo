@@ -1,0 +1,593 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	<meta name="description" content="CayitaHtmlWidgets - Demo"/>
+	<meta name="keywords" content="Html, JavaScript,ServiceStack,ASP.NET MVC,ASP.NET MVC3,Json,C#,Ajax,Boostrap" />
+    <meta name="author" content="angel ignacio colmenares laguado">
+    <title>Cayita.HtmlWidgets</title>
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+	  .nav-list button{
+		width:100%;
+		border-width:0px;
+	  }
+	  .form-horizontal input + .help-block, .form-horizontal select + .help-block, .form-horizontal textarea + .help-block, .form-horizontal .uneditable-input + .help-block, .form-horizontal .input-prepend + .help-block, .form-horizontal .input-append + .help-block {
+		margin-top: 0px;
+	  }
+	  .form-horizontal .control-group {
+		margin-bottom: 10px;
+	  }
+	  legend + .control-group {
+		margin-top: 10px;
+		-webkit-margin-top-collapse: separate;
+	  }
+	  .table thead th {text-align: center;font-weight: bold; }
+
+	  	  
+	.cayitagridwhite {
+		padding:8px 8px 4px; background-color:white;border-width:1px;
+		border-style:solid;border-color:#DFDCE8;border-radius:10px;
+		border-spacing:0px;
+		font-size:95%;  
+	}
+	.cayitagridwhite thead th {text-align: center;font-weight: bold; }
+	.cayitagridwhite thead tr:last-child th {
+		padding:2px 8px 2px 4px;
+		border-width:0px 0px 2px;
+		border-style:solid;border-color:#DFDCE8;
+	}
+	.cayitagridwhite td {padding:2px 8px 2px 4px;}
+	.cayitagridwhite tfoot th {padding:2px 8px 2px 4px;}
+	.cayitagridwhite tfoot tr:first-child th {
+		border-width:2px 0px 0px 0px;
+		border-style:solid;
+		border-color:#DFDCE8;
+		font-weight: bold;
+	}
+	.cayitagridwhite .alt td { background-color:#E1EEF4; }
+
+	.cayitagridgrey {
+		padding:8px 8px 4px; background-color:#F5F2FF;border-width:0px;
+		border-style:solid;border-color:#F5F2FF;border-radius:10px;
+		border-spacing:0px;
+		font-size:95%;  
+	}
+	.cayitagridgrey thead th {text-align: center;font-weight: bold; }
+	.cayitagridgrey thead tr:last-child th {
+		padding:2px 8px 2px 4px;
+		border-width:0px 0px 2px;
+		border-style:solid;border-color:#C9C9C9;
+	}
+	.cayitagridgrey td {padding:2px 8px 2px 4px;}
+	.cayitagridgrey tfoot th {padding:2px 8px 2px 4px; }
+	.cayitagridgrey tfoot tr:first-child th {
+		border-width:2px 0px 0px 0px;
+		border-style:solid;
+		border-color:#C9C9C9;
+		font-weight: bold;
+	}
+	.cayitagridgrey .alt td { background-color:#E1EEF4; }
+	  
+	.cayitagridblue {
+		padding:8px 8px 4px; background-color:#E1EEF4;border-width:0px;
+		border-style:solid;border-color:#E1EEF4;border-radius:10px;
+		border-spacing:0px;
+		font-size:95%;  
+	}
+	.cayitagridblue thead th {text-align: center;font-weight: bold; }
+	
+	.cayitagridblue thead tr:last-child th {
+		padding:2px 8px 2px 4px;
+		border-width:0px 0px 2px;
+		border-style:solid;border-color:#CAD6DB;}
+		.cayitagridblue td {padding:2px 8px 2px 4px;}
+		.cayitagridblue tfoot th {padding:2px 8px 2px 4px;}
+		.cayitagridblue tfoot tr:first-child th {
+		border-width:2px 0px 0px 0px;
+		border-style:solid;
+		border-color:#CAD6DB;
+		font-weight: bold;
+	}
+	.cayitagridblue .alt td { background-color:#F5F2FF; }
+  	  
+    </style>
+    
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
+    <!-- <link rel="shortcut icon" href="img/favicon.png"> -->
+	<!-- Le javascript   ================================================== -->
+    <script src="js/jquery-1.8.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootbox.min.js"></script>
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/date.format.js"></script>
+    <script type "text/javascript">
+		var convertToDate = function (v) {
+            if (!v) { return null; }
+            var d = new Date(parseFloat(/Date\(([^)]+)\)/.exec(v)[1])); // thanks demis bellot!
+            return new Date(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate(), d.getUTCHours(), d.getUTCMinutes(), d.getUTCSeconds());
+		};      	
+    </script>
+
+	<script type="text/javascript">
+	$(document).ready(function () {
+	
+		var hideIntro= function(){
+			$("#div-intro").hide();
+		};						
+					
+		var showIntro= function(){
+			$("#div-intro").show();
+		};									
+					
+		var buttonDeleteHandler= function(){
+			var db = $(".button-delete");
+			db.unbind("click");
+			db.click(function(e){
+				e.preventDefault();
+				var target = $(e.target);
+				$.post(target.attr("href"), function(data,statusText, jqXHR) {
+					$(target.parents()[2]).remove();
+				}).fail(function(jqXHR, statusText, errorThrown){
+					console.log('error delete',arguments);
+					showErrorWindow("Error",buildErrorMessage(jqXHR));
+				});
+			});		
+		};
+		
+		var buttonAddHandler= function(){
+			var db = $(".button-add");
+			db.click(function(e){
+				e.preventDefault();
+				clearForm(getForm());
+				$($("div[name='"+ db.attr("name")+"']")[0]).slideToggle();
+				$("#div-form-edit").show();
+			});		
+		};
+		
+		var buttonEditHandler= function(){
+			var db = $(".button-edit");
+			db.unbind("click");
+			db.click(function(e){
+				e.preventDefault();
+				
+				var target = $(e.target);
+				getForm().data("rowToUpdate",$(target.parents()[2]));
+				$($("div[name='"+ target.attr("name")+"']")[0]).slideToggle();
+				$("#div-form-edit").show();
+				
+				$.post(target.attr("href"), function(data,statusText, jqXHR) {
+					console.log(data);
+					loadForm(getForm(), data.Result[0]);
+				}).fail(function(jqXHR, statusText, errorThrown){
+					console.log('error delete',arguments);
+					showErrorWindow("Error",buildErrorMessage(jqXHR));
+				});
+				
+			});		
+		};
+		
+		var loadForm=function($form, data){
+			clearForm($form);		
+			for(var d in data){
+				var field = $form.find("input[name='"+d+"']");
+
+				if(field) {
+					var type = field.attr("type");
+					if(type=="date") {
+						var f = convertToDate(data[d]).format('mm/dd/yyyy');
+						field.val(f);
+					}
+					else if(type=="radio"){
+					    
+					    for (var i=0; i<field.length;i++){
+  							var fr =$(field[i]);
+							if(fr.attr("type") =="radio"){
+								fr.attr("checked", (fr.attr("value")==data[d])? "checked":null) ;
+							}
+						}
+					}
+					else if (type=="checkbox"){
+						for (var i=0; i<field.length;i++){
+  							var fr =$(field[i]);
+							if(fr.attr("type") =="checkbox"){
+								fr.attr("checked", data[d]? "checked":null) ;
+							}
+						}
+					}
+					else
+						field.val(data[d]);
+				}
+			}
+			
+		};
+		
+		var clearForm=function($form){
+			var fields = $form.find("input");
+			for(var i=0; i<fields.length;i++){
+				var field = $(fields[i]);
+				var type = field.attr("type");
+				if(!( type=="radio" || type=="checkbox" ))  field.val( field.attr("name")!="Id"?"":0);
+			}
+		};
+		
+		var getForm= function(){
+			return $("#form-edit");
+		};
+		
+		var buttonCancelHandler= function(){
+			
+			console.log('buttonCancelarHandler');
+			var db = $(".button-cancel");
+			db.click(function(e){
+				e.preventDefault();
+				console.log('buttonCancelarHandler : CLICK');
+				$("#div-form-edit").hide()
+				$($("div[name='"+ db.attr("name")+"']")[0]).slideToggle();
+			});		
+		};
+				
+		
+		var jqVal= function(){
+			
+			$("input,textarea,select").jqBootstrapValidation("destroy");
+			$("input,textarea,select").jqBootstrapValidation(
+	        {
+	            preventSubmit: true,
+	            submitError: function($form, event, errors) {
+	                // Here I do nothing, but you could do something like display 
+	                // the error messages to the user, log, etc.
+	            },
+	            submitSuccess: function($form, event) {
+	                console.log('jqVal submitSucces');
+	                event.preventDefault();
+	                $.post( $($form[0]).attr("action"), $($form[0]).serialize(), function(data, statusText, jqXHR) {
+						
+						var rowToUpdate= getForm().data("rowToUpdate");
+						if(rowToUpdate){
+							rowToUpdate.replaceWith(data.Html);
+							getForm().data("rowToUpdate",null);
+						}
+						else
+							$($("table[name='"+ $($form[0]).attr("name")+"']")[0]).append(data.Html);
+						
+						buttonDeleteHandler();
+						buttonEditHandler();
+						
+						$("#div-form-edit").hide()
+						$($("div[name='"+ $($form[0]).attr("name")+"']")[0]).slideToggle();
+					})
+					.fail(function(jqXHR, statusText, errorThrown){
+						console.log('error',arguments);
+						showErrorWindow("Error",buildErrorMessage(jqXHR));
+					})
+					.always(function(jqXHR, statusText) {
+					})		
+	                
+	            },
+	            filter: function() {
+	                return $(this).is(":visible");
+	            }
+	        });
+        };
+
+	  	
+		var showModalWindow= function(caption, body){
+			bootbox.dialog(body, [], {header:caption,  onEscape:true});
+		};
+		
+		showErrorWindow= function(caption, body){
+			//var mw = $("#modalWindow");
+			//$("#modalWindowLabel").html('<p style="color:red;"><i class="icon-minus-sign" style="margin-top:8px;margin-right:8px;"></i>'+caption+'</p>' );
+			//$("#modalWindowBody").html(body);
+			//mw.modal('show');
+			bootbox.dialog(body, [], {header:'<p style="color:red;"><i class="icon-minus-sign" style="margin-top:8px;margin-right:8px;"></i>'+caption+'</p>',  onEscape:true});
+		};
+		
+		buildErrorMessage=function(jqXHR){
+			var msg= '<p>'+ jqXHR.status+'</p>' +'<p>'+ jqXHR.statusText+'</p>'
+			var response= JSON.parse(jqXHR.responseText||'{}');
+			if(response.ResponseStatus){
+				if(response.ResponseStatus.Errors){
+					for (var i=0;i<response.ResponseStatus.Errors.length;i++){
+						msg = msg+'<p>'+ response.ResponseStatus.Errors[i].Message +'</p>' 
+					}
+				}
+				else{
+					msg = msg+ '<p>'+ response.ResponseStatus.Message +'</p>' 
+				}
+			}
+			return msg;
+		}
+		
+		$(".mainMenuItem").click(function(e) {
+	  		var target= $(e.target);
+	  		e.preventDefault();
+	  		hideIntro();
+	  		$('#div-module').show();
+	  		$('#div-module').html('<div><i class="icon-spinner icon-spin icon-2x pull-left"></i> Loading ... </div>');
+			target.button('loading');
+	  		$.post(target.attr("href"), function(data, statusText, jqXHR) {
+				$('#div-module').html(data.Html);
+				buttonAddHandler();
+				buttonEditHandler();
+				buttonDeleteHandler();
+				buttonCancelHandler();
+				jqVal();
+			})
+			.fail(function(jqXHR, statusText, errorThrown){
+				console.log('error',arguments);
+				showErrorWindow("Error",buildErrorMessage(jqXHR));
+			})
+			.always(function(jqXHR, statusText) {
+				if(statusText=='error') $('#div-module').html('');
+				target.button('reset'); })
+		});
+				
+						
+		$("#homeRef").click(function(e) {
+			e.preventDefault();
+			$('#div-module').hide();
+			$('#div-module').html('');
+			showIntro();
+		});
+				
+		$("#aboutRef").click(function(e) {
+			e.preventDefault();
+			var msg = '<p>.net/mono library for building html content</p>';
+			var msg = msg+'<p>Written by angel ignacio colmenares laguado</p>';
+			showModalWindow("About Cayita.HtmlWidgets",msg)
+		});
+
+		$("#contactRef").click(function(e) {
+			e.preventDefault();
+			var contact= 
+			 '<p><a target="_blank" href="https://github.com/angelcolmenares">https://github.com/angelcolmenares</a></p>';													
+
+			showModalWindow("Contact",contact);
+		});
+		
+		$("#licenseRef").click(function(e) {
+			e.preventDefault();
+			var license='<p>Copyright AICL.</p>'+
+			'<p>Licensed under the Apache License, Version 2.0 (the "License"); '+
+			'you may not use this work except in compliance with the License. '+
+			'You may obtain a copy of the License in the LICENSE file, or at:</p>'+
+			'<p><a target="_blank" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>'+
+			'<p>Unless required by applicable law or agreed to in writing, software '+
+			'distributed under the License is distributed on an "AS IS" BASIS, '+
+			'WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. ' +
+			'See the License for the specific language governing permissions and '+
+			'limitations under the License.</p>'+
+			'<p><a target="_blank" href="http://glyphicons.com">Glyphicons Free</a> '+
+			'licensed under <a target="_blank" href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>'+
+			'<p><a target="_blank" href="https://github.com/ServiceStack/ServiceStack/blob/master/LICENSE">ServiceStack</a> '+
+			'licensed under new BSD License.</p>'+
+			'<p><a target="_blank" href="https://github.com/twitter/bootstrap/blob/master/LICENSE">bootstrap</a> '+
+			'Licensed under the Apache License, Version 2.0.</p>'+
+			'<p><a target="_blank" href="http://fortawesome.github.com/Font-Awesome">The Font Awesome font by Dave Gandy <a/>'+
+			 'is licensed under <a target="_blank" href="http://scripts.sil.org/OFL">the SIL Open Font License </a></p>'
+
+			showModalWindow("License",license);
+		});
+
+		$("#button-show-results").click(function(e) {
+			e.preventDefault();
+			var target = $("#button-show-results");
+			var dr = $("#div-results");
+			var visible = dr.is(":visible");
+			dr.slideToggle();
+			
+			if (visible){
+				target.text("Show Sales Report");
+				return;
+			}
+			
+			target.text("Hide Sales Report");
+			dr.html('<div><i class="icon-spinner icon-spin icon-2x pull-left"></i> Loading ... </div>');
+			
+			$.post("api/Sale/send", function(data, statusText, jqXHR) {
+				dr.html(data.Html);
+			})
+			.fail(function(jqXHR, statusText, errorThrown){
+				showErrorWindow("Error",buildErrorMessage(jqXHR));
+			})
+			.always(function(jqXHR, statusText) {
+				if(statusText=='error') dr.html('');
+			})
+			
+			
+		});
+
+	});
+
+	</script>
+  
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Cayita.HtmlWidgets</a>
+          <div class="nav-collapse collapse">
+            <p class="navbar-text pull-right">
+              No logged <a href="#" class="navbar-link" id="a-logged"></a>
+            </p>
+            <ul class="nav">
+              <li class="active"><a href="#" id="homeRef">Home</a></li>
+			   <li><a href="#" id="licenseRef">License</a></li>
+              <li><a href="#" id="contactRef">Contact</a></li>
+			  <li><a href="#" id="aboutRef">About</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span2">
+          <div class="well sidebar-nav">
+			<ul class="nav nav-list">
+				<li class="nav-header">Demos</li>	
+	        	<li><a href="api/User/read?cayita=true" class="mainMenuItem" id="user-menu-item" >Users </a></li>
+              	<li><a href="api/Author/read?cayita=true" class="mainMenuItem" id="author-menu-item"  >Authors </a></li>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9" id="div-intro">
+        	<h3>Welcome to Cayita.HtmlWidgets</h3>
+			<p>Cayita.HtmlWidgets is a .net/mono library for building html content:tables, forms, divs and other html tags.</p>
+			<br/>
+			<h3>Building Tables</h3>
+			<p>The code below shows how to build html tables using Cayita.Widgets:</p>
+			<script src="https://gist.github.com/4468841.js"></script>
+			
+			<button  type="button" class="btn btn-primary" id="button-show-results">Show Sales Report</button>  
+			<div id="div-results" style="display:none"></div>
+
+<div class="row" style="margin-left:0px;">
+<div class="span7">
+<form>
+	<div class="input-prepend input-append" style="margin-top:5px">
+		<span class="add-on"><i class="icon-envelope"></i></span>
+		<input name="Email" class="span7" required="true" type="email" placeholder="Your Email address (no data collected)" data-validation-email-message="no valid e-mail" aria-invalid="true">
+		<button type="submit" class="btn btn-primary" id="button-send-report">Send Sales Report</button>		
+	</div>
+	<script type "text/javascript">
+		$("input,textarea,select").jqBootstrapValidation({
+	    	preventSubmit: true,
+	        submitSuccess: function($form, event) {
+	        	event.preventDefault();
+	        	var dr = $("#mail-sending");
+	            dr.html('<div><i class="icon-spinner icon-spin icon-2x pull-left"></i> Sending ... </div>');
+	            $.post( 'api/Sale/send', $($form[0]).serialize(), function(data, statusText, jqXHR) {
+					
+				})
+				.fail(function(jqXHR, statusText, errorThrown){
+					showErrorWindow("Error",buildErrorMessage(jqXHR));
+				})
+				.always(function(jqXHR, statusText) {
+					dr.html('');
+				})		        
+	        }
+	    });
+	</script>
+</form>
+</div>
+<div class="span2"id='mail-sending'></div>
+</div> <!-- row !-->
+
+<div>
+			<br/>
+			<h3>Building Forms</h3>
+			<p>The code below shows how to build html forms using Cayita.Widgets:</p>
+			<script src="https://gist.github.com/4486755.js"></script>
+			<button  type="button" class="btn btn-primary" id="button-show-user-form">Show User Form</button>  
+			<div id="div-user-form" style="display:none" ></div>	
+<script>	
+	var target = $("#button-show-user-form");
+	target.click(function(e) {
+		e.preventDefault();
+		var dr = $("#div-user-form");
+		var visible = dr.is(":visible");
+		dr.slideToggle();
+
+		if (visible){
+			target.text("Show User Form");
+			return;
+		}
+			
+		target.text("Hide User Form");
+		
+		if (dr.find("form").length==0){
+			dr.html('<div><i class="icon-spinner icon-spin icon-2x pull-left"></i> Loading ... </div>');
+			$.post( 'api/User/form',  function(data, statusText, jqXHR) {
+				console.log(data);
+				dr.html(data.Html);
+				$(dr.find("button")).click(function(e){
+				e.preventDefault();
+				});
+			})
+			.fail(function(jqXHR, statusText, errorThrown){
+				showErrorWindow("Error",buildErrorMessage(jqXHR));
+			})
+			.always(function(jqXHR, statusText) {
+				if(statusText=='error') dr.html('');
+			})		
+		}
+		
+	});
+</script>
+
+</div>										
+
+			<br/>
+			<h3>Examples</h3>
+			<p>Examples of using Cayita.HtmlWidgets for building html tables and forms
+			  can be found at 
+			  <button class="btn btn-info" onclick="$('#user-menu-item').trigger('click');" >Users</button> and 
+			  <button class="btn btn-info" onclick="$('#author-menu-item').trigger('click');">Authors</button> </p>
+			
+			 <p>Source  code is hosted at github:
+			 <a target="_blank" href='https://github.com/aicl/Cayita.HtmlWidgets.Demo'>
+			 https://github.com/aicl/Cayita.HtmlWidgets.Demo</a></p> 
+			
+									
+        </div><!--/span-->
+        <div class="span9" id="div-module" style="display:none">
+			
+        </div><!--/span-->
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <p>&copy; Aicl</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+<!--
+	<div id="modalWindow" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="modalWindowLabel" aria-hidden="true">
+	  <div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	    <h3 id="modalWindowLabel">Modal header</h3>
+	  </div>
+	  <div class="modal-body" id="modalWindowBody">
+	    <p>One fine body…</p>
+	  </div>
+	  <div class="modal-footer">
+	    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+	  </div>
+	</div>
+!--> 
+  </body>
+</html>
