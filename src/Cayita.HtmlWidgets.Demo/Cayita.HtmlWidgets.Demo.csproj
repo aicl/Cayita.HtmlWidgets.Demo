@@ -12,22 +12,22 @@
     <AssemblyName>Cayita.HtmlWidgets.Demo</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
+    <DebugSymbols>True</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>False</Optimize>
     <OutputPath>bin</OutputPath>
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
+    <ConsolePause>False</ConsolePause>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>True</Optimize>
     <OutputPath>bin</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
+    <ConsolePause>False</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -86,6 +86,20 @@
     <Content Include="css\twiter-bootstrap.min.css" />
     <Content Include="index.html" />
     <Content Include="css\font-awesome.min.css" />
+    <Content Include="font\FontAwesome.otf" />
+    <Content Include="font\fontawesome-webfont.eot" />
+    <Content Include="font\fontawesome-webfont.ttf" />
+    <Content Include="font\fontawesome-webfont.woff" />
+    <Content Include="font\iconic_fill.eot" />
+    <Content Include="font\iconic_fill.otf" />
+    <Content Include="font\iconic_fill.svg" />
+    <Content Include="font\iconic_fill.ttf" />
+    <Content Include="font\iconic_fill.woff" />
+    <Content Include="font\iconic_stroke.eot" />
+    <Content Include="font\iconic_stroke.otf" />
+    <Content Include="font\iconic_stroke.svg" />
+    <Content Include="font\iconic_stroke.ttf" />
+    <Content Include="font\iconic_stroke.woff" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -97,8 +111,8 @@
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>
     <MonoDevelop>
-      <Properties VerifyCodeBehindFields="true" VerifyCodeBehindEvents="true">
-        <XspParameters Port="8080" Address="127.0.0.1" SslMode="None" SslProtocol="Default" KeyType="None" CertFile="" KeyFile="" PasswordOptions="None" Password="" Verbose="true" />
+      <Properties VerifyCodeBehindFields="True" VerifyCodeBehindEvents="True">
+        <XspParameters Port="8080" Address="127.0.0.1" SslMode="None" SslProtocol="Default" KeyType="None" CertFile="" KeyFile="" PasswordOptions="None" Password="" Verbose="True" />
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
@@ -129,21 +143,5 @@
     <Folder Include="img\" />
     <Folder Include="css\" />
     <Folder Include="font\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="font\iconic_fill.eot" />
-    <None Include="font\iconic_fill.otf" />
-    <None Include="font\iconic_fill.svg" />
-    <None Include="font\iconic_fill.ttf" />
-    <None Include="font\iconic_fill.woff" />
-    <None Include="font\iconic_stroke.eot" />
-    <None Include="font\iconic_stroke.otf" />
-    <None Include="font\iconic_stroke.svg" />
-    <None Include="font\iconic_stroke.ttf" />
-    <None Include="font\iconic_stroke.woff" />
-    <None Include="font\fontawesome-webfont.woff" />
-    <None Include="font\FontAwesome.otf" />
-    <None Include="font\fontawesome-webfont.eot" />
-    <None Include="font\fontawesome-webfont.ttf" />
   </ItemGroup>
 </Project>
