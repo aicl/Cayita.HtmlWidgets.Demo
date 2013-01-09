@@ -320,6 +320,14 @@
 			return msg;
 		}
 		
+		$("#button-go-to-user").click(function(e){
+			$('#user-menu-item').trigger('click');  
+		});
+		
+		$("#button-go-to-author").click(function(e){
+			$('#author-menu-item').trigger('click');  
+		});
+		
 		$(".mainMenuItem").click(function(e) {
 	  		var target= $(e.target);
 	  		e.preventDefault();
@@ -414,8 +422,7 @@
 			})
 			.always(function(jqXHR, statusText) {
 				if(statusText=='error') dr.html('');
-			})
-			
+			})		
 			
 		});
 
@@ -548,19 +555,22 @@
 </script>
 
 </div>										
-
 			<br/>
 			<h3>Examples</h3>
 			<p>Examples of using Cayita.HtmlWidgets for building html tables and forms
 			  can be found at 
-			  <button class="btn btn-info" onclick="$('#user-menu-item').trigger('click');" >Users</button> and 
-			  <button class="btn btn-info" onclick="$('#author-menu-item').trigger('click');">Authors</button> </p>
-			
-			 <p>Source  code is hosted at github:
+			  <button class="btn btn-info" id="button-go-to-user" >Users</button> and 
+			  <button class="btn btn-info" id="button-go-to-author">Authors</button> </p>
+			 <p>The source code for the examples is hosted at github:
 			 <a target="_blank" href='https://github.com/aicl/Cayita.HtmlWidgets.Demo'>
 			 https://github.com/aicl/Cayita.HtmlWidgets.Demo</a></p> 
-			
-									
+			 <br/>
+			 <h3>Source Code</h3>
+			 <p>Source code for Cayita.HtmlWidgets is avalaible at github: 
+			 <a target="_blank" href='https://github.com/aicl/Cayita.HtmlWidgets'>
+			 https://github.com/aicl/Cayita.HtmlWidgets</a>
+			 </p>
+			 <p>Cayita.HtmlWidgets is open source according to the Apache Licence V2</p>
         </div><!--/span-->
         <div class="span9" id="div-module" style="display:none">
 			
